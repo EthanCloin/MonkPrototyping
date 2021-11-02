@@ -44,6 +44,9 @@ TagManager:
   - name: Collidable
     uniqueID: 3285473803
     locked: 0
-  - name: Effects
+  - name: Interactable
     uniqueID: 80219869
+    locked: 0
+  - name: Decor
+    uniqueID: 2898910041
     locked: 0

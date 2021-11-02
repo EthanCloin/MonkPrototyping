@@ -2690,7 +2690,6 @@ GameObject:
   - component: {fileID: 1898752029}
   - component: {fileID: 1898752032}
   - component: {fileID: 1898752031}
-  - component: {fileID: 1898752030}
   m_Layer: 0
   m_Name: Rivers
   m_TagString: Untagged
@@ -2712,24 +2711,6 @@ Transform:
   m_Father: {fileID: 1705556398}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!252 &1898752030
-SurfaceEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898752028}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_Speed: 1
-  m_SpeedVariation: 0
-  m_ForceScale: 0.1
-  m_UseContactForce: 0
-  m_UseFriction: 1
-  m_UseBounce: 1
 --- !u!483693784 &1898752031
 TilemapRenderer:
   m_ObjectHideFlags: 0
