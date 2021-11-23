@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpikeBehavior : MonoBehaviour
 {
-    
+
     // Update is called once per frame
     void Update()
     {

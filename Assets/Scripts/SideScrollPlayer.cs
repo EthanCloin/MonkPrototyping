@@ -75,7 +75,7 @@ public class SideScrollPlayer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             moveLeft = true;
-            sr.flipX = false;
+            sr.flipX = false;   
         }
         if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
