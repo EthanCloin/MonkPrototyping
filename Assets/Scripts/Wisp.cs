@@ -13,6 +13,7 @@ public class Wisp : MonoBehaviour
     {
         if (collision.gameObject.name == PlayerName)
         {
+            gameObject.GetComponent<CollectWisp>().wispPoints++;
             isCollected = true;
             Destroy(gameObject);
         }
