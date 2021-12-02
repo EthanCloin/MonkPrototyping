@@ -148,9 +148,11 @@ public class SideScrollPlayer : MonoBehaviour
         }
     }
 
-    void TakeDamage()
+    public void TakeDamage()
     {
-
+        // lose a heart
+        healthbar.LoseOneHeart();
+        rb.AddForce(new Vector2(-1, jumpForce), ForceMode2D.Impulse);
     }
 
 }
