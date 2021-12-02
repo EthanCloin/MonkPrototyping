@@ -831,8 +831,8 @@ MonoBehaviour:
   - {fileID: 1615971912}
   - {fileID: 1070298439}
   - {fileID: 1458957906}
-  fullHeart: {fileID: 21300000, guid: 6d721239aaf11eb419b5d10b4b69a29f, type: 3}
-  emptyHeart: {fileID: 0}
+  fullHeart: {fileID: 21300000, guid: f1825a8ee5cd8454ca26eaa70e40fe70, type: 3}
+  emptyHeart: {fileID: 21300000, guid: 9736be6e6d4e1e84ebc8bf4afec5a678, type: 3}
 --- !u!1 &1458957904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,6 +1270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431268969f6b840318a8d9bd07240242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTouched: 0
 --- !u!19719996 &1839699682
 TilemapCollider2D:
   m_ObjectHideFlags: 0
