@@ -5,6 +5,8 @@ using UnityEngine;
 public class SpikeBehavior : MonoBehaviour
 {
 
+    public bool playerTouched = false;
+
     // Update is called once per frame
     void Update()
     {
@@ -16,6 +18,8 @@ public class SpikeBehavior : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             print("Player hit Spikes!");
+            //gameObject.GetComponent<Health>().health--;
+            playerTouched = true; //reset to false after
         }
         
     }
