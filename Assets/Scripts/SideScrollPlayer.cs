@@ -20,11 +20,14 @@ public class SideScrollPlayer : MonoBehaviour
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
 
+    public Health healthbar;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame
@@ -143,6 +146,11 @@ public class SideScrollPlayer : MonoBehaviour
         {
             rb.velocity += Vector2.up * Physics2D.gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
+    }
+
+    void TakeDamage()
+    {
+
     }
 
 }
