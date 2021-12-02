@@ -9,7 +9,7 @@ public class Manager : MonoBehaviour
     public float timerSeconds;
     public string timerDisplay;
     public int wispsCollected;
-    public Wisp[] wispList;
+    public List<Wisp> wispList;
     private SideScrollPlayer player;
 
     // Start is called before the first frame update
@@ -19,7 +19,7 @@ public class Manager : MonoBehaviour
         timerSeconds = 0;
         wispsCollected = 0;
         player = GetComponent<SideScrollPlayer>();
-        wispList = (Wisp[]) FindObjectsOfType(typeof(Wisp), false);
+        GetWispsInScene();
     }
 
     // Update is called once per frame
@@ -32,16 +32,18 @@ public class Manager : MonoBehaviour
         {
             if (wisp.isCollected)
             {
-                wispsCollected += 1;
-                /*TODO
-                 Make this delete a wisp from the Manager's Array/List when it detects the collection.
-                Currently keeps counting bc the isCollected flips true and element isn't properly deleted
-
-                Some major refactoring may be necessary to make this function as intended.
+                /*
+                 * TODO
+                 * Make this delete a wisp from the Manager's Array/List when it detects the collection.
+                 * Currently keeps counting bc the isCollected flips true and element isn't properly deleted
+                 * Some major refactoring may be necessary to make this function as intended.
+                 * 
                  */
+                wispsCollected += 1;        
+                wispList.Remove(wisp);
+                
             }
         }
-
 
     }
 
@@ -59,10 +61,17 @@ public class Manager : MonoBehaviour
         return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    //private List<Wisp> GetWispsInScene()
-    //{
-    //    find
-    //}
+    // Gets all objects tagged "Wisp", converts to Wisp and adds to List param
+    private void GetWispsInScene()
+    {
+        Object[] wispObjectArray = FindObjectsOfType(typeof(Wisp), false);
+        foreach (Object obj in wispObjectArray)
+        {
+            wispList.Add((Wisp)obj);
+        }
+    }
+
+
 }
 
 
