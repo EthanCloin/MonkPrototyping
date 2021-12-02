@@ -61,5 +61,14 @@ public class Health : MonoBehaviour
     //NullReferenceException: Object reference not set to an instance of an objectHealth.FixedUpdate() (at Assets/Scripts/Health.cs:51)
 
 
+    public void LoseOneHeart ()
+    {
+
+        if (health != 0)
+        {
+            health--;
+        }
+    }
+
 
 }
