@@ -6,6 +6,7 @@ public class SpikeBehavior : MonoBehaviour
 {
 
     public bool playerTouched = false;
+    public Manager mgr;
 
     // Update is called once per frame
     void Update()
