@@ -12,6 +12,10 @@ public class Health : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
+    private bool isDead;
+    
+
+
     private void Update()
     {
         
@@ -69,6 +73,31 @@ public class Health : MonoBehaviour
             health--;
         }
     }
+
+    public void Death ()
+    { 
+            Application.Quit();
+        
+    }
+
+
+    //prints to the screen that you die and quit the game
+    private void OnGUI()
+    {
+        if (health == 0)
+        {
+            isDead = true;
+            GUI.Label
+                (
+                new Rect(20, 10, Screen.width, Screen.height),
+                "You Died!"
+                );
+            Death();
+
+        }//end if
+    }//end method
+
+
 
 
 }
