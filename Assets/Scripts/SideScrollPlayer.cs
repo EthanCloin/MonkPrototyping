@@ -33,16 +33,23 @@ public class SideScrollPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveListener();
-        CheckIfGrounded();
-        JumpListener();        
+        if (Health.control.getPlayerStatus() == false)
+        {
+            MoveListener();
+            CheckIfGrounded();
+            JumpListener();
+        }
+        
     }
 
     private void FixedUpdate()
     {
-        MoveActor();
-        JumpActor();
-        BetterJump();
+        if (Health.control.getPlayerStatus() == false)
+        {
+            MoveActor();
+            JumpActor();
+            BetterJump();
+        }
     }
 
     void CheckIfGrounded()

@@ -11,7 +11,10 @@ public class Health : MonoBehaviour
     public Image[] hearts; 
     public Sprite fullHeart;
     public Sprite emptyHeart;
-    
+
+    private bool isDead = false;
+
+    public static Health control;
 
 
     void Update()
@@ -94,6 +97,8 @@ public class Health : MonoBehaviour
     {
         if (health == 0)
         {
+            setPlayerStatus(true);
+
             GUI.Label
                 (
                 new Rect(20, 10, Screen.width, Screen.height),
@@ -104,7 +109,31 @@ public class Health : MonoBehaviour
         }//end if
     }//end method
 
+    // Start is called before the first frame update
+    void Awake()
+    {
+        if (control != null)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            control = this;
+        }
+    }//end method
 
+
+
+    public bool getPlayerStatus()
+    {
+        return isDead;
+    }
+
+
+    public void setPlayerStatus(bool value)
+    {
+        isDead = value;
+    }
 
 
 }
