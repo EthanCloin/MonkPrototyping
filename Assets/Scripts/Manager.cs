@@ -28,6 +28,7 @@ public class Manager : MonoBehaviour
         timerSeconds += Time.deltaTime;
         timerDisplay = formatTimerDisplay(timerSeconds);
 
+
         foreach (Wisp wisp in wispList)
         {
             if (wisp.isCollected)
@@ -42,9 +43,16 @@ public class Manager : MonoBehaviour
                 wispsCollected += 1;        
                 wispList.Remove(wisp);
                 
+                
             }
         }
+        OnGUI();
 
+    }
+
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(20, 20, 200, 40), "Score: " + wispsCollected.ToString());
     }
 
 
