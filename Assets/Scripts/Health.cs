@@ -5,18 +5,16 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public int health;
-    public int numOfHearts;
+    public int health = 3;
+    public int numOfHearts = 3;
 
-    public Image[] hearts;
+    public Image[] hearts; 
     public Sprite fullHeart;
     public Sprite emptyHeart;
-
-    private bool isDead;
     
 
 
-    private void Update()
+    void Update()
     {
         
         
@@ -55,11 +53,21 @@ public class Health : MonoBehaviour
         }*/
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        if (gameObject.GetComponent<SpikeBehavior>().playerTouched == true)
+        
+        if (SpikeBehavior.control.getTouchSpike() == true)
         {
-            health--;
+            LoseOneHeart();
+            print("Player hit Spikes! And health is " + health);
+
+            SpikeBehavior.control.setTouchedSpike(false);
+
+            if(health == 0)
+            {
+                Death(); 
+            }
+
         }
     }
     //NullReferenceException: Object reference not set to an instance of an objectHealth.FixedUpdate() (at Assets/Scripts/Health.cs:51)
@@ -76,7 +84,7 @@ public class Health : MonoBehaviour
 
     public void Death ()
     { 
-            Application.Quit();
+           Application.Quit();
         
     }
 
@@ -86,13 +94,12 @@ public class Health : MonoBehaviour
     {
         if (health == 0)
         {
-            isDead = true;
             GUI.Label
                 (
                 new Rect(20, 10, Screen.width, Screen.height),
                 "You Died!"
                 );
-            Death();
+            Application.Quit();
 
         }//end if
     }//end method
