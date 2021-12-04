@@ -10,7 +10,8 @@ public class Manager : MonoBehaviour
     public string timerDisplay;
     public int wispsCollected;
     public List<Wisp> wispList;
-    private SideScrollPlayer player;
+    public SideScrollPlayer player;
+    public bool isDead;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public class Manager : MonoBehaviour
         score = 0;
         timerSeconds = 0;
         wispsCollected = 0;
-        player = GetComponent<SideScrollPlayer>();
+        //player = GetComponent<SideScrollPlayer>();
         GetWispsInScene();
     }
 
@@ -27,8 +28,11 @@ public class Manager : MonoBehaviour
     {
         timerSeconds += Time.deltaTime;
         timerDisplay = formatTimerDisplay(timerSeconds);
-
-
+        checkIfDead();
+        if(isDead)
+        {
+            print("Player has died!");
+        }
         foreach (Wisp wisp in wispList)
         {
             if (wisp.isCollected)
@@ -41,13 +45,9 @@ public class Manager : MonoBehaviour
                  * 
                  */
                 wispsCollected += 1;        
-                wispList.Remove(wisp);
-                
-                
+                wispList.Remove(wisp);                  
             }
         }
-        OnGUI();
-
     }
 
     private void OnGUI()
@@ -76,6 +76,13 @@ public class Manager : MonoBehaviour
         foreach (Object obj in wispObjectArray)
         {
             wispList.Add((Wisp)obj);
+        }
+    }
+    public void checkIfDead()
+    {
+        if (player.transform.position.y < -6) //if player falls below raft, mark as dead.
+        {
+            isDead = true;
         }
     }
 

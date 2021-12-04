@@ -95,7 +95,7 @@ public class Health : MonoBehaviour
     //prints to the screen that you die and quit the game
     private void OnGUI()
     {
-        if (health == 0)
+        if (health == 0 || isDead ==true)
         {
             setPlayerStatus(true);
 
@@ -134,6 +134,4 @@ public class Health : MonoBehaviour
     {
         isDead = value;
     }
-
-
 }
