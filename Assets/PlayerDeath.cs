@@ -13,9 +13,26 @@ public class PlayerDeath : MonoBehaviour
         {
             isDead = true;
         }
+        OnGui();
     }
     private void Start()
     {
          player = GameObject.FindGameObjectWithTag("Player");//get reference to player.
     }
+    //prints to the screen that you die and quit the game
+    private void OnGui()
+    {
+        if (isDead == true)
+        {
+            //setPlayerStatus(true);
+
+            GUI.Label
+                (
+                new Rect(20, 10, Screen.width, Screen.height),
+                "You Died!"
+                );
+            Application.Quit();
+
+        }//end if
+    }//end method
 }
