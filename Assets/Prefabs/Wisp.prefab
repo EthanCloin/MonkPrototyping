@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1322496140728110118}
   m_Layer: 0
   m_Name: Wisp
-  m_TagString: Untagged
+  m_TagString: Wisp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,3 +112,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8775b8dd622134ec0ab4f835a7a3e2d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCollected: 0
+  wispPoints: 0
