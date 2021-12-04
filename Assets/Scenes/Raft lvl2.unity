@@ -654,19 +654,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5866ff67068cb42abd56ade101b155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1052655763}
-  manager: {fileID: 1074166907}
---- !u!114 &1074166907 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1889506420315276660, guid: 8bd923cc913cb463a94aa5932e49ea78, type: 3}
-  m_PrefabInstance: {fileID: 1483344822}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28c8d0565f49043939fcb97b0f180f29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1077261424
 GameObject:
   m_ObjectHideFlags: 0
@@ -3633,6 +3620,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SideScrollPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 8755011003504769829, guid: ce6ea35485747884c8b5aa2d2bd52019, type: 3}
+      propertyPath: hearts.Array.data[0]
+      value: 
+      objectReference: {fileID: 606658205}
+    - target: {fileID: 8755011003504769829, guid: ce6ea35485747884c8b5aa2d2bd52019, type: 3}
+      propertyPath: hearts.Array.data[1]
+      value: 
+      objectReference: {fileID: 1828492980}
+    - target: {fileID: 8755011003504769829, guid: ce6ea35485747884c8b5aa2d2bd52019, type: 3}
+      propertyPath: hearts.Array.data[2]
+      value: 
+      objectReference: {fileID: 2108214593}
     - target: {fileID: 8755011003504769831, guid: ce6ea35485747884c8b5aa2d2bd52019, type: 3}
       propertyPath: jumpForce
       value: 10
