@@ -28,4 +28,9 @@ public class TransitionScenes : MonoBehaviour
     {
         SceneManager.LoadScene(targetScene);
     }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

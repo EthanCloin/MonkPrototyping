@@ -7,6 +7,7 @@ TagManager:
   - Collectable
   - Wisp
   - crate
+  - Heart
   layers:
   - Default
   - TransparentFX

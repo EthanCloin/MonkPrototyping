@@ -54,12 +54,12 @@ public class Health : MonoBehaviour
     void FixedUpdate()
     {
         
-        if (SpikeBehavior.control.getTouchSpike() == true)
+        if (SpikeBehavior.control.GetTouchSpike() == true)
         {
             LoseOneHeart();
             print("Player hit Spikes! And health is " + health);
 
-            SpikeBehavior.control.setTouchedSpike(false);
+            SpikeBehavior.control.SetTouchedSpike(false);
 
             if(health == 0)
             {

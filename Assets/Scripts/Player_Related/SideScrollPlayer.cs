@@ -20,6 +20,8 @@ public class SideScrollPlayer : MonoBehaviour
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
 
+    public RefactoredHealth health;
+
     // public Health healthbar;
 
     // Start is called before the first frame update
@@ -27,31 +29,29 @@ public class SideScrollPlayer : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        health = RefactoredHealth.getInstance();
         
     }
 
-    // Update is called once per frame
+    // Listen for inputs and check jump conditions
     void Update()
     {
-        if (Health.control.GetIsDead() == false)
-        {
-            MoveListener();
-            CheckIfGrounded();
-            JumpListener();
-        }
-        
+        MoveListener();
+        CheckIfGrounded();
+        JumpListener();                
     }
 
+    // execute valid inputs and jumps
     private void FixedUpdate()
     {
-        if (Health.control.GetIsDead() == false)
-        {
-            MoveActor();
-            JumpActor();
-            BetterJump();
-        }
+        MoveActor();
+        JumpActor();
+        BetterJump();        
     }
 
+    /// <summary>
+    /// Checks whether the player is in contact with groundLayer and reflects in isGrounded 
+    /// </summary>
     void CheckIfGrounded()
     {
         Collider2D collider = Physics2D.OverlapCircle(groundChecker.position, checkGroundRadius, groundLayer);
@@ -94,7 +94,7 @@ public class SideScrollPlayer : MonoBehaviour
     }
 
     /// <summary>
-    /// Controls horizonatal movement based on moveRight/moveLeft flags
+    /// Controls horizontal movement based on moveRight/moveLeft flags
     /// </summary>
     void MoveActor()
     {
@@ -155,11 +155,16 @@ public class SideScrollPlayer : MonoBehaviour
         }
     }
 
-    //public void TakeDamage()
-    //{
-    //    // lose a heart
-    //    healthbar.LoseOneHeart();
-    //    rb.AddForce(new Vector2(-1, jumpForce), ForceMode2D.Impulse);
-    //}
+    /// <summary>
+    /// Decrease player health by one and apply impulse force
+    ///
+    /// consider adding a CoRoutine to apply 5s of invincibility between
+    /// executions of this fxn
+    /// </summary>
+    public void TakeOneDamage()
+    {
+        health.TakeOneDamage();
+        rb.AddForce(new Vector2(-1, jumpForce), ForceMode2D.Impulse);
+    }
 
 }

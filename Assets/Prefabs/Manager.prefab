@@ -49,3 +49,11 @@ MonoBehaviour:
   timerDisplay: 
   wispsCollected: 0
   wispList: []
+  tempDeathBool: 0
+  deathScreen: {fileID: 0}
+  heartContainer: {fileID: 0}
+  heartImagesArray: []
+  fullHeart: {fileID: 21300000, guid: f1825a8ee5cd8454ca26eaa70e40fe70, type: 3}
+  emptyHeart: {fileID: 21300000, guid: 9736be6e6d4e1e84ebc8bf4afec5a678, type: 3}
+  deathScreenVisible: 0
+  mainCamera: {fileID: 0}

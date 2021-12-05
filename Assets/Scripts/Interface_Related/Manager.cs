@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
@@ -14,12 +15,15 @@ public class Manager : MonoBehaviour
 
     // Player
     private SideScrollPlayer player;
-    // public Health healthbar;
+    private RefactoredHealth health;
     public bool tempDeathBool;
     
     // UI
     public GameObject deathScreen;
     public GameObject heartContainer;
+    public Image[] heartImagesArray;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
     public bool deathScreenVisible;
     public Camera mainCamera;
     
@@ -32,11 +36,16 @@ public class Manager : MonoBehaviour
         wispsCollected = 0;
 
         player = GetComponent<SideScrollPlayer>();
-        // healthbar = player.healthbar;
+        health = RefactoredHealth.getInstance();
+        heartImagesArray = heartContainer.GetComponentsInChildren<Image>();
+        print(heartImagesArray.Length);
+        
         tempDeathBool = false;
 
-        deathScreenVisible = false;
+        HideDeathScreen();
         GetWispsInScene();
+
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -57,18 +66,17 @@ public class Manager : MonoBehaviour
         }
 
         // PLAYER DEATH
-        // if (healthbar.GetIsDead())
-        if (tempDeathBool)
-        {
+        if (health.GetCurrentHealth() == 0)
+        {         
             ShowDeathScreen();
             // freeze the game
             Time.timeScale = 0;
         }
-        else
-        {
-            HideDeathScreen();
-            Time.timeScale = 1;
-        }
+        
+
+
+        // Refresh health display
+        DisplayCurrentHealth();
 
     }
 
@@ -101,13 +109,14 @@ public class Manager : MonoBehaviour
         }
     }
 
+    
+
     private void HideDeathScreen()
     {
-        // move behind the camera
+        // move behind the camera once
         deathScreen.transform.position = new Vector3(mainCamera.transform.position.x,
                                             mainCamera.transform.position.y,
-                                            mainCamera.transform.position.z - 1000);
-        print("moved deathscreen");
+                                            mainCamera.transform.position.z - 1000);      
     }
 
     private void ShowDeathScreen()
@@ -117,6 +126,24 @@ public class Manager : MonoBehaviour
                                         413,
                                         215,
                                         mainCamera.transform.position.z);
+    }
+
+    /// <summary>
+    /// Updates the Heart Images to match RefactoredHealth
+    /// </summary>
+    private void DisplayCurrentHealth()
+    {
+        for (int i = 0; i < heartImagesArray.Length; i++)
+        {
+            if (i < health.GetCurrentHealth())
+            {
+                heartImagesArray[i].sprite = fullHeart;
+            }
+            else
+            {
+                heartImagesArray[i].sprite = emptyHeart;
+            }
+        }
     }
 }
 

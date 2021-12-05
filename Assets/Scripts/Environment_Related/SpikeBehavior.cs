@@ -8,16 +8,10 @@ public class SpikeBehavior : MonoBehaviour
     public bool touchedSpike = false;
     public Manager mgr;
     public static SpikeBehavior control;
+    public string playerTag = "Player";
+    public RefactoredHealth health;
 
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    // Start is called before the first frame update
     void Awake()
     {
         if (control != null)
@@ -28,30 +22,29 @@ public class SpikeBehavior : MonoBehaviour
         {
             control = this;
         }
-    }//end method
+
+        health = RefactoredHealth.getInstance();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == playerTag)
         {
-            //print("Player hit Spikes!");
-            
+            SetTouchedSpike(true); //reset to false in Manager
 
-
-            setTouchedSpike(true); //reset to false after
-
-            
+            // this is updating health value and manager reacts to it
+            health.TakeOneDamage();
         }
         
     }
 
-    public bool getTouchSpike()
+    public bool GetTouchSpike()
     {
         return touchedSpike;
     }
 
 
-    public void setTouchedSpike(bool value)
+    public void SetTouchedSpike(bool value)
     {
         touchedSpike = value;
     }
