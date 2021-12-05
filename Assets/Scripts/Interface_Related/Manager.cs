@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
+    // Scoring
     public float score;
     public float timeToLevelComplete;
     public float timerSeconds;
     public string timerDisplay;
     public int wispsCollected;
     public List<Wisp> wispList;
+
+    // Player
     private SideScrollPlayer player;
+    // public Health healthbar;
+    public bool tempDeathBool;
+    
+    // UI
+    public GameObject deathScreen;
+    public GameObject heartContainer;
+    public bool deathScreenVisible;
+    public Camera mainCamera;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +30,12 @@ public class Manager : MonoBehaviour
         score = 0;
         timerSeconds = 0;
         wispsCollected = 0;
+
         player = GetComponent<SideScrollPlayer>();
+        // healthbar = player.healthbar;
+        tempDeathBool = false;
+
+        deathScreenVisible = false;
         GetWispsInScene();
     }
 
@@ -27,17 +44,31 @@ public class Manager : MonoBehaviour
     {
         timerSeconds += Time.deltaTime;
         timerDisplay = formatTimerDisplay(timerSeconds);
-
-
+         
+        
         foreach (Wisp wisp in wispList)
         {
+            // Dynamically update wispList upon collection
             if (wisp.isCollected)
             {              
                 wispsCollected += 1;        
                 wispList.Remove(wisp);                                
             }
         }
-        // OnGUI(); DON"T CALL THIS FUNCTION, it's like Update: called automatically
+
+        // PLAYER DEATH
+        // if (healthbar.GetIsDead())
+        if (tempDeathBool)
+        {
+            ShowDeathScreen();
+            // freeze the game
+            Time.timeScale = 0;
+        }
+        else
+        {
+            HideDeathScreen();
+            Time.timeScale = 1;
+        }
 
     }
 
@@ -70,7 +101,23 @@ public class Manager : MonoBehaviour
         }
     }
 
+    private void HideDeathScreen()
+    {
+        // move behind the camera
+        deathScreen.transform.position = new Vector3(mainCamera.transform.position.x,
+                                            mainCamera.transform.position.y,
+                                            mainCamera.transform.position.z - 1000);
+        print("moved deathscreen");
+    }
 
+    private void ShowDeathScreen()
+    {
+        // move to camera
+        deathScreen.transform.position = new Vector3(
+                                        413,
+                                        215,
+                                        mainCamera.transform.position.z);
+    }
 }
 
 

@@ -719,7 +719,7 @@ GameObject:
   - component: {fileID: 5536688069725947313}
   - component: {fileID: 5536688069725947314}
   m_Layer: 5
-  m_Name: TitleScreenUI
+  m_Name: TitleScreenUI 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

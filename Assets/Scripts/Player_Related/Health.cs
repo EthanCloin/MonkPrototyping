@@ -49,11 +49,6 @@ public class Health : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
-
-        /*if (gameObject.GetComponent<SpikeBehavior>().playerTouched == true)
-        {   
-            health--;
-        }*/
     }
 
     void FixedUpdate()
@@ -73,7 +68,6 @@ public class Health : MonoBehaviour
 
         }
     }
-    //NullReferenceException: Object reference not set to an instance of an objectHealth.FixedUpdate() (at Assets/Scripts/Health.cs:51)
 
 
     public void LoseOneHeart ()
@@ -97,7 +91,7 @@ public class Health : MonoBehaviour
     {
         if (health == 0 || isDead ==true)
         {
-            setPlayerStatus(true);
+            SetIsDead(true);
 
             GUI.Label
                 (
@@ -123,14 +117,13 @@ public class Health : MonoBehaviour
     }//end method
 
 
-
-    public bool getPlayerStatus()
+    public bool GetIsDead()
     {
         return isDead;
     }
 
 
-    public void setPlayerStatus(bool value)
+    public void SetIsDead(bool value)
     {
         isDead = value;
     }

@@ -196,6 +196,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5536688067852352005, guid: 75064e9f63a2e495b91264fe732e59f8, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 43d59b5c638b0664db55f3a4e4d130ef, type: 2}
     - target: {fileID: 5536688067866106905, guid: 75064e9f63a2e495b91264fe732e59f8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -204,6 +208,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: TransitionToScene
       objectReference: {fileID: 0}
+    - target: {fileID: 5536688067978816394, guid: 75064e9f63a2e495b91264fe732e59f8, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 43d59b5c638b0664db55f3a4e4d130ef, type: 2}
     - target: {fileID: 5536688068056718763, guid: 75064e9f63a2e495b91264fe732e59f8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -212,6 +220,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: QuitGame
       objectReference: {fileID: 0}
+    - target: {fileID: 5536688068343896283, guid: 75064e9f63a2e495b91264fe732e59f8, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 43d59b5c638b0664db55f3a4e4d130ef, type: 2}
     - target: {fileID: 5536688069725947315, guid: 75064e9f63a2e495b91264fe732e59f8, type: 3}
       propertyPath: m_Pivot.x
       value: 0

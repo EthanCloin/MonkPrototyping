@@ -26,7 +26,7 @@ public class MenuControls : MonoBehaviour
             camTransform.position.y,
             camTransform.position.z + 10);
 
-        // hide menu based on isVisible 
+        // hide menu based on isVisible
         if (isVisible)
         {
             gameObject.SetActive(true);

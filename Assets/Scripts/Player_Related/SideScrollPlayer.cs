@@ -33,7 +33,7 @@ public class SideScrollPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Health.control.getPlayerStatus() == false)
+        if (Health.control.GetIsDead() == false)
         {
             MoveListener();
             CheckIfGrounded();
@@ -44,7 +44,7 @@ public class SideScrollPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Health.control.getPlayerStatus() == false)
+        if (Health.control.GetIsDead() == false)
         {
             MoveActor();
             JumpActor();
