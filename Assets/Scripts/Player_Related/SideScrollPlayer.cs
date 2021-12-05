@@ -20,7 +20,7 @@ public class SideScrollPlayer : MonoBehaviour
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
 
-    public Health healthbar;
+    // public Health healthbar;
 
     // Start is called before the first frame update
     void Start()
@@ -155,11 +155,11 @@ public class SideScrollPlayer : MonoBehaviour
         }
     }
 
-    public void TakeDamage()
-    {
-        // lose a heart
-        healthbar.LoseOneHeart();
-        rb.AddForce(new Vector2(-1, jumpForce), ForceMode2D.Impulse);
-    }
+    //public void TakeDamage()
+    //{
+    //    // lose a heart
+    //    healthbar.LoseOneHeart();
+    //    rb.AddForce(new Vector2(-1, jumpForce), ForceMode2D.Impulse);
+    //}
 
 }
