@@ -10,8 +10,7 @@ public class Manager : MonoBehaviour
     public string timerDisplay;
     public int wispsCollected;
     public List<Wisp> wispList;
-    public SideScrollPlayer player;
-    public bool isDead;
+    private SideScrollPlayer player;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +18,7 @@ public class Manager : MonoBehaviour
         score = 0;
         timerSeconds = 0;
         wispsCollected = 0;
-        //player = GetComponent<SideScrollPlayer>();
+        player = GetComponent<SideScrollPlayer>();
         GetWispsInScene();
     }
 
@@ -28,26 +27,18 @@ public class Manager : MonoBehaviour
     {
         timerSeconds += Time.deltaTime;
         timerDisplay = formatTimerDisplay(timerSeconds);
-        checkIfDead();
-        if(isDead)
-        {
-            print("Player has died!");
-        }
+
+
         foreach (Wisp wisp in wispList)
         {
             if (wisp.isCollected)
-            {
-                /*
-                 * TODO
-                 * Make this delete a wisp from the Manager's Array/List when it detects the collection.
-                 * Currently keeps counting bc the isCollected flips true and element isn't properly deleted
-                 * Some major refactoring may be necessary to make this function as intended.
-                 * 
-                 */
+            {              
                 wispsCollected += 1;        
-                wispList.Remove(wisp);                  
+                wispList.Remove(wisp);                                
             }
         }
+        // OnGUI(); DON"T CALL THIS FUNCTION, it's like Update: called automatically
+
     }
 
     private void OnGUI()
@@ -76,13 +67,6 @@ public class Manager : MonoBehaviour
         foreach (Object obj in wispObjectArray)
         {
             wispList.Add((Wisp)obj);
-        }
-    }
-    public void checkIfDead()
-    {
-        if (player.transform.position.y < -6) //if player falls below raft, mark as dead.
-        {
-            isDead = true;
         }
     }
 
