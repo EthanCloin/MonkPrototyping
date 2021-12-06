@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// This class manages health information and passes it along
@@ -9,12 +10,16 @@ using UnityEngine;
 /// Singleton
 /// 
 /// </summary>
-public class RefactoredHealth
+public class RefactoredHealth : MonoBehaviour
 {
     private static RefactoredHealth playerHealth = null;
     private int currentHealth;
     public int maximumHealth = 3;
-   
+
+    
+
+
+
     // constructor
     private RefactoredHealth()
     {
@@ -36,6 +41,7 @@ public class RefactoredHealth
     /// <returns>int currentHealth after taking damage</returns>
     public int TakeOneDamage()
     {
+        print("Player hit Spikes! And health is " + currentHealth);
         return currentHealth--;
     }
 
@@ -52,5 +58,9 @@ public class RefactoredHealth
     {
         currentHealth = maximumHealth;
     }
+
+
+
+    
 
 }
