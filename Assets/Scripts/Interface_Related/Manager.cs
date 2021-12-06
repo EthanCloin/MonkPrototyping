@@ -16,6 +16,7 @@ public class Manager : MonoBehaviour
     // Player
     private SideScrollPlayer player;
     private RefactoredHealth health;
+    public int currentHealth;
     // public bool freezeTime;
     
     // UI
@@ -59,6 +60,7 @@ public class Manager : MonoBehaviour
     {
         timerSeconds += Time.deltaTime;
         timerDisplay = formatTimerDisplay(timerSeconds);
+        currentHealth = health.GetCurrentHealth();
          
         
         foreach (Wisp wisp in wispList)
@@ -72,7 +74,7 @@ public class Manager : MonoBehaviour
         }
 
         // PLAYER DEATH
-        if (health.GetCurrentHealth() == 0)
+        if (currentHealth <= 0)
         {
             print(" health is zero " + health.GetCurrentHealth());
             ShowDeathScreen();

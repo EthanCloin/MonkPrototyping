@@ -80,14 +80,14 @@ public class SpikeBehavior : MonoBehaviour
     {
         if (player.IsTouching(spike))
         {
-            print("Player hit Spikes! And health is blah blah bbb " + health);
+           // print("Player hit Spikes! And health is blah blah bbb " + health);
             SetTouchedSpike(true);
             
         }
         else
         {
             SetTouchedSpike(false);
-            print("Player did not hit ht hit hit Spikes! " + health);
+            //print("Player did not hit ht hit hit Spikes! " + health);
         }
     }
 

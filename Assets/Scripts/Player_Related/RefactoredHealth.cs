@@ -13,7 +13,7 @@ using UnityEngine.UI;
 public class RefactoredHealth : MonoBehaviour
 {
     private static RefactoredHealth playerHealth = null;
-    private int currentHealth;
+    public int currentHealth;
     public int maximumHealth = 3;
     public Manager manager;
     public bool isDead;
