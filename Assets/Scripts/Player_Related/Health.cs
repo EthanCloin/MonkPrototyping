@@ -56,13 +56,14 @@ public class Health : MonoBehaviour
         
         if (SpikeBehavior.control.GetTouchSpike() == true)
         {
-            LoseOneHeart();
-            print("Player hit Spikes! And health is " + health);
+            //LoseOneHeart();
+            //print("Player hit Spikes! And health is " + health);
 
-            SpikeBehavior.control.SetTouchedSpike(false);
+            //SpikeBehavior.control.SetTouchedSpike(false);
 
             if(health == 0)
             {
+                SetIsDead(true);
                 Death(); 
             }
 
@@ -89,9 +90,8 @@ public class Health : MonoBehaviour
     //prints to the screen that you die and quit the game
     private void OnGUI()
     {
-        if (health == 0 || isDead ==true)
+        if (isDead)
         {
-            SetIsDead(true);
 
             GUI.Label
                 (
