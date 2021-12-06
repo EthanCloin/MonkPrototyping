@@ -820,12 +820,19 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  spikeChecker: {fileID: 0}
+  checkSpikeRadius: 0
+  spikeLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isTouchingSpike: 0
   moveRight: 0
   moveLeft: 0
   jump: 0
   isGrounded: 0
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
+  health: {fileID: 0}
 --- !u!61 &1052655767
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3049,6 +3056,9 @@ MonoBehaviour:
   touchedSpike: 0
   mgr: {fileID: 0}
   playerTag: Player
+  health: {fileID: 0}
+  player: {fileID: 0}
+  spike: {fileID: 0}
 --- !u!19719996 &1875603128
 TilemapCollider2D:
   m_ObjectHideFlags: 0
