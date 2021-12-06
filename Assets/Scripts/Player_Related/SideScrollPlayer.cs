@@ -13,10 +13,6 @@ public class SideScrollPlayer : MonoBehaviour
     public float checkGroundRadius;
     public LayerMask groundLayer;
 
-    public Transform spikeChecker;
-    public float checkSpikeRadius;
-    public LayerMask spikeLayer;
-    public bool isTouchingSpike = false;
 
 
     public bool moveRight = false, moveLeft = false, jump = false;
@@ -70,22 +66,7 @@ public class SideScrollPlayer : MonoBehaviour
         }
     }
 
-    void ifTouchingSpike()
-    {
-        Collider2D collider = Physics2D.OverlapCircle(spikeChecker.position, checkSpikeRadius, spikeLayer);
-        if (collider != null)
-        {
-            isTouchingSpike = true;
-            print("Player hit Spikes  ");
-        }
-        else
-        {
-            isTouchingSpike = false;
-            print("Player does not hit  Spikes ");
-        }
-
-
-    }
+   
 
     /// <summary>
     /// Sets moveRight/moveLeft flags indicating user movement
