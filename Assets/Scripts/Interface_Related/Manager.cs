@@ -16,7 +16,7 @@ public class Manager : MonoBehaviour
     // Player
     private SideScrollPlayer player;
     private RefactoredHealth health;
-    public bool tempDeathBool;
+    // public bool freezeTime;
     
     // UI
     public GameObject deathScreen;
@@ -31,21 +31,24 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        print("Start: started method");
         score = 0;
         timerSeconds = 0;
         wispsCollected = 0;
 
         player = GetComponent<SideScrollPlayer>();
         health = RefactoredHealth.getInstance();
-        heartImagesArray = heartContainer.GetComponentsInChildren<Image>();
-        print(heartImagesArray.Length);
+        health.RestoreFullHealth();
+        heartImagesArray = heartContainer.GetComponentsInChildren<Image>();    
         
-        tempDeathBool = false;
+        // freezeTime = false;
 
         HideDeathScreen();
         GetWispsInScene();
+        UnFreezeTime();
 
-        Time.timeScale = 1;
+        print("Start: completed method");
+
     }
 
     // Update is called once per frame
@@ -70,7 +73,7 @@ public class Manager : MonoBehaviour
         {         
             ShowDeathScreen();
             // freeze the game
-            Time.timeScale = 0;
+            FreezeTime();
         }
         
 
@@ -144,6 +147,16 @@ public class Manager : MonoBehaviour
                 heartImagesArray[i].sprite = emptyHeart;
             }
         }
+    }
+
+    public void FreezeTime()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void UnFreezeTime()
+    {
+        Time.timeScale = 1f;
     }
 }
 
