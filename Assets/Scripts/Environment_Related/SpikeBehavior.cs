@@ -11,6 +11,8 @@ public class SpikeBehavior : MonoBehaviour
     public string playerTag = "Player";
     public RefactoredHealth health;
 
+    public bool isInvincible = false;
+
 
     public Collider2D player;
     public Collider2D spike;
@@ -40,9 +42,10 @@ public class SpikeBehavior : MonoBehaviour
         health = RefactoredHealth.getInstance();
     }
 
-    private void Update()
+    void Update()
     {
         IsTouchingSpike();
+      
     }
 
 
@@ -54,16 +57,18 @@ public class SpikeBehavior : MonoBehaviour
         {
             SetTouchedSpike(true);
 
+            
 
             // this is updating health value and manager reacts to it
-            health.TakeOneDamage();
+            if(isInvincible == false)
+            {
+                health.TakeOneDamage();
+                StartCoroutine(timer());
+                StartCoroutine(invincible());
+            }
 
            
 
-            StartCoroutine(timer());
-
-            
-           
         }
 
        
@@ -114,6 +119,26 @@ public class SpikeBehavior : MonoBehaviour
                 health.TakeOneDamage();
             }
         }
+
+    }
+
+
+    IEnumerator invincible()//this is a corroutine
+    {
+        float time = 4.5f;
+
+        isInvincible = true;
+        print("Player is invincible");
+
+        bool flag = true;
+
+        while (flag)
+        {
+            yield return new WaitForSeconds(time);
+            isInvincible = false;
+            print("Player is no longer invincible");
+        }
+        
 
     }
 }
