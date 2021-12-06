@@ -16,10 +16,7 @@ public class RefactoredHealth : MonoBehaviour
     private int currentHealth;
     public int maximumHealth = 3;
     public Manager manager;
-
-    
-
-
+    public bool isDead;
 
     // constructor
     private RefactoredHealth()
@@ -59,6 +56,15 @@ public class RefactoredHealth : MonoBehaviour
     {
         currentHealth = maximumHealth;
     }
+
+    public void Death()
+    {
+        if(currentHealth <= 0)
+        {
+            manager.ShowDeathScreen();
+        }
+    }
+
 
 
 
