@@ -70,7 +70,8 @@ public class Manager : MonoBehaviour
 
         // PLAYER DEATH
         if (health.GetCurrentHealth() == 0)
-        {         
+        {
+            print(" health is xero " + health.GetCurrentHealth());
             ShowDeathScreen();
             // freeze the game
             FreezeTime();
