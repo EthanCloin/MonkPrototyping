@@ -16,6 +16,8 @@ public class Health : MonoBehaviour
 
     public static Health control;
 
+    public Manager manager;
+
 
     void Update()
     {
@@ -81,9 +83,9 @@ public class Health : MonoBehaviour
     }
 
     public void Death ()
-    { 
-           Application.Quit();
-        
+    {
+        manager.FreezeTime();
+        manager.ShowDeathScreen();
     }
 
 

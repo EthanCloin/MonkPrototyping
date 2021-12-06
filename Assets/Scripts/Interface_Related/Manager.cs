@@ -74,7 +74,7 @@ public class Manager : MonoBehaviour
         // PLAYER DEATH
         if (health.GetCurrentHealth() == 0)
         {
-            print(" health is xero " + health.GetCurrentHealth());
+            print(" health is zero " + health.GetCurrentHealth());
             ShowDeathScreen();
             // freeze the game
             FreezeTime();
@@ -118,7 +118,7 @@ public class Manager : MonoBehaviour
 
     
 
-    private void HideDeathScreen()
+    public void HideDeathScreen()
     {
         // move behind the camera once
         deathScreen.transform.position = new Vector3(mainCamera.transform.position.x,
@@ -126,7 +126,7 @@ public class Manager : MonoBehaviour
                                             mainCamera.transform.position.z - 1000);      
     }
 
-    private void ShowDeathScreen()
+    public void ShowDeathScreen()
     {
         // move to camera
         deathScreen.transform.position = new Vector3(
@@ -134,7 +134,7 @@ public class Manager : MonoBehaviour
                                         215,
                                         mainCamera.transform.position.z);
     }
-    private void HideWinScreen()
+    public void HideWinScreen()
     {
         // move behind the camera once
         winScreen.transform.position = new Vector3(mainCamera.transform.position.x,
@@ -142,12 +142,12 @@ public class Manager : MonoBehaviour
                                             mainCamera.transform.position.z - 1000);
     }
 
-    private void ShowWinScreen()
+    public void ShowWinScreen()
     {
         // move to camera
         winScreen.transform.position = new Vector3(
-                                        413,
-                                        215,
+                                        mainCamera.transform.position.x,
+                                        mainCamera.transform.position.y,
                                         mainCamera.transform.position.z);
     }
 
