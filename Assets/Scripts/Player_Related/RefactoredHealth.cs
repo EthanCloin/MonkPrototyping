@@ -18,6 +18,12 @@ public class RefactoredHealth : MonoBehaviour
     public Manager manager;
     public bool isDead;
 
+
+
+    public void Update()
+    {
+        Death();
+    }
     // constructor
     private RefactoredHealth()
     {
@@ -39,7 +45,7 @@ public class RefactoredHealth : MonoBehaviour
     /// <returns>int currentHealth after taking damage</returns>
     public int TakeOneDamage()
     {
-        print("Player hit Spikes! And health is " + currentHealth);
+        print("RefactoredHealth: Player hit Spikes! And health is " + currentHealth);
         return currentHealth--;
     }
 
@@ -59,10 +65,9 @@ public class RefactoredHealth : MonoBehaviour
 
     public void Death()
     {
-        if(currentHealth <= 0)
-        {
-            manager.ShowDeathScreen();
-        }
+        print("Death State reached " + currentHealth);
+        //manager.ShowDeathScreen();
+        
     }
 
 

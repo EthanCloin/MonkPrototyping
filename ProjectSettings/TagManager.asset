@@ -8,6 +8,7 @@ TagManager:
   - Wisp
   - crate
   - Heart
+  - spike
   layers:
   - Default
   - TransparentFX

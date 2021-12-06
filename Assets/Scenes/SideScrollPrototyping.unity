@@ -1901,7 +1901,7 @@ GameObject:
   - component: {fileID: 1839699681}
   m_Layer: 6
   m_Name: Spikes
-  m_TagString: Untagged
+  m_TagString: spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2126,6 +2126,7 @@ MonoBehaviour:
   mgr: {fileID: 0}
   playerTag: Player
   health: {fileID: 0}
+  isInvincible: 0
   player: {fileID: 0}
   spike: {fileID: 0}
 --- !u!19719996 &1839699682
