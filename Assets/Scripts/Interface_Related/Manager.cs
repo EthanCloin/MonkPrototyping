@@ -20,11 +20,13 @@ public class Manager : MonoBehaviour
     
     // UI
     public GameObject deathScreen;
+    public GameObject winScreen;
     public GameObject heartContainer;
     public Image[] heartImagesArray;
     public Sprite fullHeart;
     public Sprite emptyHeart;
     public bool deathScreenVisible;
+    public bool winScreenVisible;
     public Camera mainCamera;
     
 
@@ -44,6 +46,7 @@ public class Manager : MonoBehaviour
         // freezeTime = false;
 
         HideDeathScreen();
+        HideWinScreen();
         GetWispsInScene();
         UnFreezeTime();
 
@@ -131,6 +134,22 @@ public class Manager : MonoBehaviour
                                         215,
                                         mainCamera.transform.position.z);
     }
+    private void HideWinScreen()
+    {
+        // move behind the camera once
+        winScreen.transform.position = new Vector3(mainCamera.transform.position.x,
+                                            mainCamera.transform.position.y,
+                                            mainCamera.transform.position.z - 1000);
+    }
+
+    private void ShowWinScreen()
+    {
+        // move to camera
+        winScreen.transform.position = new Vector3(
+                                        413,
+                                        215,
+                                        mainCamera.transform.position.z);
+    }
 
     /// <summary>
     /// Updates the Heart Images to match RefactoredHealth
@@ -158,6 +177,13 @@ public class Manager : MonoBehaviour
     public void UnFreezeTime()
     {
         Time.timeScale = 1f;
+    }
+
+    public void CompleteLevel() //should call when player touches the fireplace
+    {
+        print("Level won!");
+        ShowWinScreen();
+        FreezeTime();
     }
 }
 
