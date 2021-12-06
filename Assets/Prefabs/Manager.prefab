@@ -49,7 +49,6 @@ MonoBehaviour:
   timerDisplay: 
   wispsCollected: 0
   wispList: []
-  tempDeathBool: 0
   deathScreen: {fileID: 0}
   heartContainer: {fileID: 0}
   heartImagesArray: []
