@@ -493,11 +493,11 @@ PrefabInstance:
     - target: {fileID: 1889506420315276660, guid: 8bd923cc913cb463a94aa5932e49ea78, type: 3}
       propertyPath: LevelOneStars
       value: 
-      objectReference: {fileID: 2036009307}
+      objectReference: {fileID: 644566049}
     - target: {fileID: 1889506420315276660, guid: 8bd923cc913cb463a94aa5932e49ea78, type: 3}
       propertyPath: LevelTwoStars
       value: 
-      objectReference: {fileID: 644566049}
+      objectReference: {fileID: 2036009307}
     - target: {fileID: 1889506420315276660, guid: 8bd923cc913cb463a94aa5932e49ea78, type: 3}
       propertyPath: starImagesArray.Array.size
       value: 4
