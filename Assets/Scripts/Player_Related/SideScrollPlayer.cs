@@ -13,23 +13,22 @@ public class SideScrollPlayer : MonoBehaviour
     public float checkGroundRadius;
     public LayerMask groundLayer;
 
-
-
     public bool moveRight = false, moveLeft = false, jump = false;
     public bool isGrounded;
+    public bool isInvincible;
 
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
 
     public Health health;
 
-    // public Health healthbar;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        isInvincible = false;
         health = Health.GetInstance();
         
     }
@@ -159,15 +158,30 @@ public class SideScrollPlayer : MonoBehaviour
     }
 
     /// <summary>
-    /// Decrease player health by one and apply impulse force
-    ///
-    /// consider adding a CoRoutine to apply 5s of invincibility between
-    /// executions of this fxn
+    /// Called upon Spike Collision, cues invincibility and damage
     /// </summary>
-    public void TakeOneDamage()
+    public void HitSpike()
     {
+        if (isInvincible) { return; }
+
         health.TakeOneDamage();
-        rb.AddForce(new Vector2(-1, jumpForce), ForceMode2D.Impulse);
+        StartCoroutine(TemporaryInvincibility());                                
     }
 
+    /// <summary>
+    /// create a 4.5 seconds invvincibility window after damage is taken
+    /// </summary>
+    IEnumerator TemporaryInvincibility()//this is a corroutine
+    {
+        float time = 4.5f;
+
+        isInvincible = true;
+        bool flag = true;
+
+        while (flag)
+        {            
+            yield return new WaitForSeconds(time);
+            isInvincible = false;
+        }
+    }
 }
