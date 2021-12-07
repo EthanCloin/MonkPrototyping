@@ -17,7 +17,7 @@ using UnityEngine;
 
 public class ScoreSystem
 {
-    private float highscore; // 0-3
+    private int highscore; // 0-3
     private string levelName; // scene names
     private float bestTime; // fewest seconds to complete 
 
@@ -26,10 +26,11 @@ public class ScoreSystem
     /// </summary>
     /// <param name="levelName">string representing level</param>
     /// <param name="maximumScore">float representing score needed for 3 stars</param>
-    public ScoreSystem(string levelName)
+    public ScoreSystem(string levelName, float bestTimeInSeconds)
     {
         this.levelName = levelName;
         highscore = GetHighscoreForLevel(this.levelName);
+        bestTime = bestTimeInSeconds;
     }
 
 
@@ -37,8 +38,8 @@ public class ScoreSystem
     /// Checks PlayerPrefs for a highscore on given levelName and creates it at 0 if not
     /// </summary>
     /// <param name="levelName">string representing level</param>
-    /// <returns></returns>
-    public float GetHighscoreForLevel(string levelName)
+    /// <returns>the value in player prefs</returns>
+    public int GetHighscoreForLevel(string levelName)
     {
         // check whether highscore for this level exists
         if (PlayerPrefs.HasKey(levelName))
@@ -78,6 +79,15 @@ public class ScoreSystem
             }
         }         
         return yourScore;
+    }
+
+    /// <summary>
+    /// Call this method to change the PlayerPref for given level
+    /// </summary>
+    /// <param name="newScore"></param>
+    public void SetHighscoreForLevel(string levelName, int newScore)
+    {
+        PlayerPrefs.SetInt(levelName, newScore);
     }
 
 }

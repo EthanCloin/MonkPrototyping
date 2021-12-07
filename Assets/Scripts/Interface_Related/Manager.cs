@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
     // Scoring
+    public string levelName;
     public float score;
     public float timeToLevelComplete;
     public float timerSeconds;
     public string timerDisplay;
-    public int wispsCollected;
+    public float wispsAvailable;
+    public float wispsCollected;
     public List<Wisp> wispList;
+    public ScoreSystem scoreObject;
+    public int highscore;
 
     // Player
     private SideScrollPlayer player;
@@ -29,15 +34,29 @@ public class Manager : MonoBehaviour
     public bool deathScreenVisible;
     public bool winScreenVisible;
     public Camera mainCamera;
+    public Text LevelScoreDisplayText;
+    
+
     
 
     // Start is called before the first frame update
     void Start()
     {
-        print("Start: started method");
-        score = 0;
+
+
+
+        // Score System
+        levelName = SceneManager.GetActiveScene().name;
+        scoreObject = new ScoreSystem(levelName);         
+        highscore = scoreObject.GetHighscoreForLevel(levelName);
+        LevelScoreDisplayText.text = highscore.ToString();
+
+        score = 0;        
         timerSeconds = 0;
         wispsCollected = 0;
+        GetWispsInScene();
+        wispsAvailable = wispList.Count;
+
 
         player = GetComponent<SideScrollPlayer>();
         health = Health.GetInstance();
@@ -48,10 +67,9 @@ public class Manager : MonoBehaviour
 
         HideDeathScreen();
         HideWinScreen();
-        GetWispsInScene();
+        
         UnFreezeTime();
 
-        print("Start: completed method");
 
     }
 
@@ -67,6 +85,7 @@ public class Manager : MonoBehaviour
 
         foreach (Wisp wisp in wispList)
         {
+            //TODO: Redesign this to be less destructive
             // Dynamically update wispList upon collection
             if (wisp.isCollected)
             {              
@@ -78,9 +97,7 @@ public class Manager : MonoBehaviour
         // PLAYER DEATH
         if (currentHealth <= 0)
         {
-            print(" health is zero " + health.GetCurrentHealth());
             ShowDeathScreen();
-            // freeze the game
             FreezeTime();
         }
         
@@ -191,9 +208,21 @@ public class Manager : MonoBehaviour
 
     public void CompleteLevel() //should call when player touches the fireplace
     {
-        print("Level won!");
-        ShowWinScreen();
+        ShowWinScreen();        
         FreezeTime();
+        UpdateHighscore();
+    }
+
+    public void UpdateHighscore()
+    {
+        float percentOfWispsCollected = wispsCollected / wispsAvailable;
+        int newHighscore = scoreObject.CalculateScore(timerSeconds, percentOfWispsCollected);
+        if (newHighscore > highscore)
+        {
+            scoreObject.SetHighscoreForLevel(levelName, newHighscore);
+            print("NEW SCORE: " + newHighscore.ToString());
+        }
+
     }
 
     //public void DidPlayerFall()
