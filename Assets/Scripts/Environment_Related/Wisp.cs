@@ -7,6 +7,7 @@ public class Wisp : MonoBehaviour
     string PlayerName = "SideScrollPlayer";
     public bool isCollected = false;
     public GameObject[] wisps;
+    public AudioSource sfx;
 
     public int wispPoints = 0;
 
@@ -14,6 +15,7 @@ public class Wisp : MonoBehaviour
 
     void Start()
     {
+        sfx = GameObject.FindGameObjectWithTag("WispSFX").GetComponent<AudioSource>();
         //Setting all wisps to active
         foreach (GameObject go in wisps)
         {
@@ -27,6 +29,7 @@ public class Wisp : MonoBehaviour
         if (collision.gameObject.name == PlayerName)
         {
             //gameObject.GetComponent<Manager>().wispsCollected++;
+            ;
             isCollected = true;
 
             //Destroy(gameObject);
