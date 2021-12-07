@@ -125,34 +125,38 @@ public class Manager : MonoBehaviour
     public void HideDeathScreen()
     {
         // move behind the camera once
-        deathScreen.transform.position = new Vector3(mainCamera.transform.position.x,
-                                            mainCamera.transform.position.y,
-                                            mainCamera.transform.position.z - 1000);      
+        //deathScreen.transform.position = new Vector3(mainCamera.transform.position.x,
+        //                                    mainCamera.transform.position.y,
+        //                                    mainCamera.transform.position.z - 1000);      
+        deathScreen.SetActive(false);
     }
 
     public void ShowDeathScreen()
     {
         // move to camera
-        deathScreen.transform.position = new Vector3(
-                                        413,
-                                        215,
-                                        mainCamera.transform.position.z);
+        //deathScreen.transform.position = new Vector3(
+        //                                413,
+        //                                215,
+        //                                mainCamera.transform.position.z);
+        deathScreen.SetActive(true);
     }
     public void HideWinScreen()
     {
         // move behind the camera once
-        winScreen.transform.position = new Vector3(mainCamera.transform.position.x,
-                                            mainCamera.transform.position.y,
-                                            mainCamera.transform.position.z - 1000);
+        //winScreen.transform.position = new Vector3(mainCamera.transform.position.x,
+        //                                    mainCamera.transform.position.y,
+        //                                    mainCamera.transform.position.z - 1000);
+        winScreen.SetActive(false);
     }
 
     public void ShowWinScreen()
     {
         // move to camera
-        winScreen.transform.position = new Vector3(
-                                        mainCamera.transform.position.x,
-                                        mainCamera.transform.position.y,
-                                        mainCamera.transform.position.z);
+        //winScreen.transform.position = new Vector3(
+        //                                mainCamera.transform.position.x,
+        //                                mainCamera.transform.position.y,
+        //                                mainCamera.transform.position.z);
+        winScreen.SetActive(true);
     }
 
     /// <summary>
