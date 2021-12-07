@@ -18,6 +18,7 @@ public class Manager : MonoBehaviour
     public List<Wisp> wispList;
     public ScoreSystem scoreObject;
     public int highscore;
+    // public float bestTime;
     public Text TimerValue;
     public Text ScoreValue;
 
@@ -43,8 +44,7 @@ public class Manager : MonoBehaviour
 
     // DataManagement
     public string LevelOneName = "SideScrollPrototyping";
-    public string LevelTwoName = "2_level_raft";
-    public bool ResetHighScores;
+    public string LevelTwoName = "2_level_raft";    
     
 
 
@@ -230,8 +230,9 @@ public class Manager : MonoBehaviour
     public void CompleteLevel() //should call when player touches the fireplace
     {
         ShowWinScreen();
-        FreezeTime();
         UpdateHighscore();
+        FreezeTime();
+        
     }
 
     public void UpdateHighscore()

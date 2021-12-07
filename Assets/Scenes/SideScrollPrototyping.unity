@@ -695,7 +695,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 585188cdc4600544eb408bee749e4b3a, type: 3}
     m_FontSize: 20
     m_FontStyle: 2
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 24
     m_Alignment: 7
@@ -801,16 +801,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1202231749}
         m_TargetAssemblyTypeName: TransitionScenes, Assembly-CSharp
-        m_MethodName: QuitGame
-        m_Mode: 1
+        m_MethodName: TransitionToScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: TitleScreen
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &345930367
@@ -2188,7 +2188,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1202231749}
         m_TargetAssemblyTypeName: TransitionScenes, Assembly-CSharp
         m_MethodName: RestartScene
         m_Mode: 1
@@ -2597,7 +2597,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 585188cdc4600544eb408bee749e4b3a, type: 3}
     m_FontSize: 20
     m_FontStyle: 2
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 24
     m_Alignment: 7
@@ -5023,7 +5023,6 @@ GameObject:
   - component: {fileID: 1784318733}
   - component: {fileID: 1784318732}
   - component: {fileID: 1784318731}
-  - component: {fileID: 1784318730}
   - component: {fileID: 1784318736}
   m_Layer: 0
   m_Name: SideScrollPlayer
@@ -5032,18 +5031,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1784318730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784318729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12c4b7ec31864447d9df54d3d5911898, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &1784318731
 Rigidbody2D:
   serializedVersion: 4
@@ -5396,7 +5383,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1801211490}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.6, y: 6.5, z: 0}
+  m_LocalPosition: {x: 21.96, y: 6.44, z: 0}
   m_LocalScale: {x: 0.8437, y: 0.5311, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10587,6 +10574,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1889506420315276660, guid: 8bd923cc913cb463a94aa5932e49ea78, type: 3}
+      propertyPath: highscore
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1889506420315276660, guid: 8bd923cc913cb463a94aa5932e49ea78, type: 3}
       propertyPath: winScreen
       value: 
       objectReference: {fileID: 9617830}
@@ -10610,6 +10601,10 @@ PrefabInstance:
       propertyPath: heartContainer
       value: 
       objectReference: {fileID: 1234762459}
+    - target: {fileID: 1889506420315276660, guid: 8bd923cc913cb463a94aa5932e49ea78, type: 3}
+      propertyPath: threeStarTimeInSeconds
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1889506420315276661, guid: 8bd923cc913cb463a94aa5932e49ea78, type: 3}
       propertyPath: m_RootOrder
       value: 2
