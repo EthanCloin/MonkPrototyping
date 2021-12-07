@@ -61,9 +61,9 @@ public class Manager : MonoBehaviour
         timerSeconds += Time.deltaTime;
         timerDisplay = formatTimerDisplay(timerSeconds);
         currentHealth = health.GetCurrentHealth();
-        print("before fall");
-        DidPlayerFall();
-        print("after fall");
+
+        //DidPlayerFall();
+
 
         foreach (Wisp wisp in wispList)
         {
@@ -196,16 +196,16 @@ public class Manager : MonoBehaviour
         FreezeTime();
     }
 
-    public void DidPlayerFall()
-    {
-        print("before if");
-        if (player)
-        {
-            currentHealth = 0;
-            print("Play fell below crate");
-        }
-        print("HERE");
-    }
+    //public void DidPlayerFall()
+    //{
+    //    print("before if");
+    //    if (player)
+    //    {
+    //        currentHealth = 0;
+    //        print("Play fell below crate");
+    //    }
+    //    print("HERE");
+    //}
 }
 
 
