@@ -6,8 +6,21 @@ public class Wisp : MonoBehaviour
 {
     string PlayerName = "SideScrollPlayer";
     public bool isCollected = false;
+    public GameObject[] wisps;
 
     public int wispPoints = 0;
+
+
+
+    void Start()
+    {
+        //Setting all wisps to active
+        foreach (GameObject go in wisps)
+        {
+            go.SetActive(true);
+        }
+
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,8 +28,13 @@ public class Wisp : MonoBehaviour
         {
             //gameObject.GetComponent<Manager>().wispsCollected++;
             isCollected = true;
-            Destroy(gameObject);
+
+            //Destroy(gameObject);
+            //setting triggered wisp to active == false
+            gameObject.SetActive(false);
         }
 
     }
+
+
 }
