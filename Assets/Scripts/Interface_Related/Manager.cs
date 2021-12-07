@@ -37,44 +37,61 @@ public class Manager : MonoBehaviour
     public bool deathScreenVisible;
     public bool winScreenVisible;
     public Camera mainCamera;
-    // public Text LevelScoreDisplayText;
+    public Sprite[] starImagesArray;
+    public Image LevelOneStars;
+    public Image LevelTwoStars;
 
+    // DataManagement
+    public string LevelOneName = "SideScrollPrototyping";
+    public string LevelTwoName = "2_level_raft";
+    public bool ResetHighScores;
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
 
-
+        
+        
 
         // Score System
         levelName = SceneManager.GetActiveScene().name;
-
-        scoreObject = new ScoreSystem(levelName, threeStarTimeInSeconds);         
-
         scoreObject = new ScoreSystem(levelName, threeStarTimeInSeconds);
+        // TitleScreen Unique Logic
+        if (levelName.Equals("TitleScreen"))
+        {
+            int highscoreOne = scoreObject.GetHighscoreForLevel(LevelOneName);
+            int highscoreTwo = scoreObject.GetHighscoreForLevel(LevelTwoName);
 
-        highscore = scoreObject.GetHighscoreForLevel(levelName);
-        // LevelScoreDisplayText.text = highscore.ToString();
+            LevelOneStars.sprite = starImagesArray[highscoreOne];
+            LevelTwoStars.sprite = starImagesArray[highscoreTwo];
 
-        score = 0;
-        timerSeconds = 0;
-        wispsCollected = 0;
-        GetWispsInScene();
-        wispsAvailable = wispList.Count;
+        }
+        else
+        {
+            highscore = scoreObject.GetHighscoreForLevel(levelName);
+
+            score = 0;
+            timerSeconds = 0;
+            wispsCollected = 0;
+            GetWispsInScene();
+            wispsAvailable = wispList.Count;
 
 
-        player = GetComponent<SideScrollPlayer>();
-        health = Health.GetInstance();
-        health.RestoreFullHealth();
-        heartImagesArray = heartContainer.GetComponentsInChildren<Image>();
+            player = GetComponent<SideScrollPlayer>();
+            health = Health.GetInstance();
+            health.RestoreFullHealth();
+            heartImagesArray = heartContainer.GetComponentsInChildren<Image>();
 
-        // freezeTime = false;
+            // freezeTime = false;
 
-        HideDeathScreen();
-        HideWinScreen();
+            HideDeathScreen();
+            HideWinScreen();
 
-        UnFreezeTime();
+            UnFreezeTime();
+        }     
+        
 
 
     }
@@ -82,6 +99,9 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+        if (levelName.Equals("TitleScreen")) { return;  }
+
+        // This only runs on NOT titlescreen scenes
         timerSeconds += Time.deltaTime;
         timerDisplay = formatTimerDisplay(timerSeconds);
         TimerValue.text = timerDisplay;
@@ -95,7 +115,7 @@ public class Manager : MonoBehaviour
             //TODO: Redesign this to be less destructive
             // Dynamically update wispList upon collection
             if (wisp.isCollected)
-            {
+            { 
                 wispsCollected += 1;
                 //wispList.Remove(wisp);
                 
@@ -228,6 +248,18 @@ public class Manager : MonoBehaviour
 
     }
 
+    public void ResetScores()
+    {
+        scoreObject.ResetHighscore(LevelOneName);
+        scoreObject.ResetHighscore(LevelTwoName);
+
+        int highscoreOne = scoreObject.GetHighscoreForLevel(LevelOneName);
+        int highscoreTwo = scoreObject.GetHighscoreForLevel(LevelTwoName);
+
+        LevelOneStars.sprite = starImagesArray[highscoreOne];
+        LevelTwoStars.sprite = starImagesArray[highscoreTwo];
+
+    }
     //public void DidPlayerFall()
     //{
     //    print("before if");
