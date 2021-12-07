@@ -6,16 +6,16 @@ public class SpikeBehavior : MonoBehaviour
 {
 
     public bool touchedSpike = false;
-    public Manager mgr;
-    public static SpikeBehavior control;
+    // public Manager mgr;
+    // public static SpikeBehavior control;
     public string playerTag = "Player";
-    public RefactoredHealth health;
+    public Health health;
 
     public bool isInvincible = false;
 
 
-    public Collider2D player;
-    public Collider2D spike;
+    // public Collider2D player;
+    // public Collider2D spike;
 
 
 
@@ -24,8 +24,8 @@ public class SpikeBehavior : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>();
-        spike = GameObject.FindGameObjectWithTag("spike").GetComponent<Collider2D>();
+        // player = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>();
+        // spike = GameObject.FindGameObjectWithTag("spike").GetComponent<Collider2D>();
     }
 
 
@@ -33,26 +33,27 @@ public class SpikeBehavior : MonoBehaviour
 
     void Awake()
     {
-        if (control != null)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            control = this;
-        }
+        //if (control != null)
+        //{
+        //    Destroy(this);
+        //}
+        //else
+        //{
+        //    control = this;
+        //}
 
-        health = RefactoredHealth.getInstance();
+        health = Health.GetInstance();
      
     }
     /// <summary>
     /// checks frame by frame to see if player is touching spike
     /// </summary>
-    void Update()
-    {
-        IsTouchingSpike();
+    
+    //void Update()
+    //{
+    //    IsTouchingSpike();
       
-    }
+    //}
 
 
 
@@ -61,118 +62,125 @@ public class SpikeBehavior : MonoBehaviour
     /// </summary>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (health.GetCurrentHealth() > 0)
+        // check that collision is with Player
+        if (collision.gameObject.CompareTag(playerTag))
         {
-            if (collision.gameObject.tag == playerTag)
-            {
-                SetTouchedSpike(true);
-
-
-
-                // this is updating health value and manager reacts to it
-                if (isInvincible == false)
-                {
-                    health.TakeOneDamage();
-                    //StartCoroutine(timer());
-                    //StartCoroutine(invincible());
-                }
-
-            }
-
+            print("[SpikeBehavior] Player Hit Spike!");
+            health.TakeOneDamage();
         }
-        else
-        {
-            health.Death();
-        }
+
+        //if (health.GetCurrentHealth() > 0)
+        //{
+        //    if (collision.gameObject.tag == playerTag)
+        //    {
+        //        SetTouchedSpike(true);
+
+
+
+            //        // this is updating health value and manager reacts to it
+            //        if (isInvincible == false)
+            //        {
+            //            health.TakeOneDamage();
+            //            //StartCoroutine(timer());
+            //            //StartCoroutine(invincible());
+            //        }
+
+            //    }
+
+            //}
+            //else
+            //{
+            //    health.Death();
+            //}
 
     }
 
     /// <summary>
     /// check if player is currently touching spike
     /// </summary>
-    public void IsTouchingSpike()
-    {
-        if (player.IsTouching(spike))
-        {
-            print("Player touching Spikes! " + health);
-            SetTouchedSpike(true);
+    //public void IsTouchingSpike()
+    //{
+    //    if (player.IsTouching(spike))
+    //    {
+    //        print("Player touching Spikes! " + health);
+    //        SetTouchedSpike(true);
             
-        }
-        else
-        {
-            SetTouchedSpike(false);
-            print("Player did not touching Spikes! " + health);
-        }
-    }
+    //    }
+    //    else
+    //    {
+    //        SetTouchedSpike(false);
+    //        print("Player did not touching Spikes! " + health);
+    //    }
+    //}
 
 
 
-    public bool GetTouchSpike()
-    {
-        return touchedSpike;
-    }
+    //public bool GetTouchSpike()
+    //{
+    //    return touchedSpike;
+    //}
 
 
-    public void SetTouchedSpike(bool value)
-    {
-        touchedSpike = value;
-    }
+    //public void SetTouchedSpike(bool value)
+    //{
+    //    touchedSpike = value;
+    //}
 
     /// <summary>
     /// checks if player is continuously touching spike and takes one health if it is so
     /// </summary>
-    IEnumerator timer()//this is a corroutine
-    {
-        int time = 5;
+    //IEnumerator timer()//this is a corroutine
+    //{
+    //    int time = 5;
 
-        while (GetTouchSpike() == true)
-        {
-            if (GetTouchSpike() == false)
-            {
-                time = 5;
-            }
+    //    while (GetTouchSpike() == true)
+    //    {
+    //        if (GetTouchSpike() == false)
+    //        {
+    //            time = 5;
+    //        }
 
-            yield return new WaitForSeconds(time);
+    //        yield return new WaitForSeconds(time);
 
-            if(GetTouchSpike() == false)
-            {
-                time = 5;
-            }
-            if (health.GetCurrentHealth() > 0)
-            {
-                if (GetTouchSpike() == true)
-                {
-                    health.TakeOneDamage();
-                }
-            }
+    //        if(GetTouchSpike() == false)
+    //        {
+    //            time = 5;
+    //        }
+    //        if (health.GetCurrentHealth() > 0)
+    //        {
+    //            if (GetTouchSpike() == true)
+    //            {
+    //                health.TakeOneDamage();
+    //            }
+    //        }
 
-            else
-            {
-                health.Death();
-            }
-        }
+    //        else
+    //        {
+    //            health.Death();
+    //        }
+    //    }
 
-    }
+    //}
 
-    /// <summary>
-    /// create a 4.5 seconds invvincibility window after damage is taken
-    /// </summary>
-    IEnumerator invincible()//this is a corroutine
-    {
-        float time = 4.5f;
+    ///// <summary>
+    ///// create a 4.5 seconds invvincibility window after damage is taken
+    ///// </summary>
+    //IEnumerator invincible()//this is a corroutine
+    //{
+    //    float time = 4.5f;
 
-        isInvincible = true;
-        print("Player is invincible");
+    //    isInvincible = true;
+    //    print("Player is invincible");
 
-        bool flag = true;
+    //    bool flag = true;
 
-        while (flag)
-        {
-            yield return new WaitForSeconds(time);
-            isInvincible = false;
-            print("Player is no longer invincible");
-        }
+    //    while (flag)
+    //    {
+    //        yield return new WaitForSeconds(time);
+    //        isInvincible = false;
+    //        print("Player is no longer invincible");
+    //    }
         
 
-    }
+    //}
 }

@@ -21,7 +21,7 @@ public class SideScrollPlayer : MonoBehaviour
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
 
-    public RefactoredHealth health;
+    public Health health;
 
     // public Health healthbar;
 
@@ -30,7 +30,7 @@ public class SideScrollPlayer : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-        health = RefactoredHealth.getInstance();
+        health = Health.GetInstance();
         
     }
 

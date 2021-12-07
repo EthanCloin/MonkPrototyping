@@ -3,130 +3,75 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Health : MonoBehaviour
+/// <summary>
+/// This class manages health information and passes it along
+/// to the Manager to update display
+///
+/// Singleton
+/// 
+/// </summary>
+public class Health
 {
-    public int health = 3;
-    public int numOfHearts = 3;
+    private static Health playerHealth = null;
+    public int currentHealth;
+    public int maximumHealth = 3;
+    // public Manager manager;
+    // public bool isDead;
 
-    public Image[] hearts; 
-    public Sprite fullHeart;
-    public Sprite emptyHeart;
-
-    private bool isDead = false;
-
-    public static Health control;
-
-    public Manager manager;
-
-
-    void Update()
+    // constructor
+    private Health()
     {
+        currentHealth = maximumHealth;
+    }
+
+    // instance method ensures only 1 health object exists
+    public static Health GetInstance()
+    {
+        if (playerHealth == null)
+            playerHealth = new Health();
+
+        return playerHealth;
+    }
+
+    /// <summary>
+    /// Call this function to decrement and return the health value
+    /// </summary>
+    /// <returns>int currentHealth after taking damage</returns>
+    public int TakeOneDamage()
+    {
+        Debug.Log("Health: Player took 1 Damage! Health is " + currentHealth.ToString());
+        return currentHealth--;
+    }
+
+    /// <summary>
+    /// Call this function to return current health
+    /// </summary>
+    /// <returns>int currentHealth</returns>
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    /// <summary>
+    /// Call this function to reset health value to max
+    /// </summary>
+    public void RestoreFullHealth()
+    {
+        currentHealth = maximumHealth;
+    }
+
+
+    // Let Manager handle UI Updates
+    //public void Death()
+    //{
+    //    print("Death State reached " + currentHealth);
+    //    //manager.ShowDeathScreen();
         
-        
-        for (int i = 0; i < hearts.Length; i++)
-        {
-            
-            //make sure health is not more than the number of hearts
-            if(health > numOfHearts)
-            {
-                health = numOfHearts;
-            }
-
-            if(i < health)
-            {
-                hearts[i].sprite = fullHeart;
-            }
-            else
-            {
-                hearts[i].sprite = emptyHeart;
-            }
-            
-
-            //
-            if (i < numOfHearts)
-            {
-                hearts[i].enabled = true;
-            } else
-            {
-                hearts[i].enabled = false;
-            }
-        }
-    }
-
-    void FixedUpdate()
-    {
-        
-        if (SpikeBehavior.control.GetTouchSpike() == true)
-        {
-            //LoseOneHeart();
-            //print("Player hit Spikes! And health is " + health);
-
-            //SpikeBehavior.control.SetTouchedSpike(false);
-
-            if(health == 0)
-            {
-                SetIsDead(true);
-                Death(); 
-            }
-
-        }
-    }
+    //}
 
 
-    public void LoseOneHeart ()
-    {
-
-        if (health != 0)
-        {
-            health--;
-        }
-    }
-
-    public void Death ()
-    {
-        manager.FreezeTime();
-        manager.ShowDeathScreen();
-    }
 
 
-    //prints to the screen that you die and quit the game
-    private void OnGUI()
-    {
-        if (isDead)
-        {
+    
 
-            GUI.Label
-                (
-                new Rect(20, 10, Screen.width, Screen.height),
-                "You Died!"
-                );
-            Application.Quit();
-
-        }//end if
-    }//end method
-
-    // Start is called before the first frame update
-    void Awake()
-    {
-        if (control != null)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            control = this;
-        }
-    }//end method
-
-
-    public bool GetIsDead()
-    {
-        return isDead;
-    }
-
-
-    public void SetIsDead(bool value)
-    {
-        isDead = value;
-    }
 }

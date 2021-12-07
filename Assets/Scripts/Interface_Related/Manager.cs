@@ -15,7 +15,7 @@ public class Manager : MonoBehaviour
 
     // Player
     private SideScrollPlayer player;
-    private RefactoredHealth health;
+    private Health health;
     public int currentHealth;
     // public bool freezeTime;
     
@@ -40,7 +40,7 @@ public class Manager : MonoBehaviour
         wispsCollected = 0;
 
         player = GetComponent<SideScrollPlayer>();
-        health = RefactoredHealth.getInstance();
+        health = Health.GetInstance();
         health.RestoreFullHealth();
         heartImagesArray = heartContainer.GetComponentsInChildren<Image>();    
         
@@ -89,6 +89,8 @@ public class Manager : MonoBehaviour
 
     }
 
+
+    // TODO: Get rid of this in favor of Text element on Canvas
     private void OnGUI()
     {
         GUI.Label(new Rect(20, 20, 200, 40), "Score: " + wispsCollected.ToString());
