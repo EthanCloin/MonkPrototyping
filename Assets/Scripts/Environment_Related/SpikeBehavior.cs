@@ -10,8 +10,8 @@ public class SpikeBehavior : MonoBehaviour
     // public static SpikeBehavior control;
     public string playerTag = "Player";
     public Health health;
-
-    public bool isInvincible = false;
+    public SideScrollPlayer player;
+    // public bool isInvincible = false;
 
 
     // public Collider2D player;
@@ -63,11 +63,9 @@ public class SpikeBehavior : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // check that collision is with Player
-        if (collision.gameObject.CompareTag(playerTag) && !isInvincible)
+        if (collision.gameObject.CompareTag(playerTag) && !player.isInvincible)
         {
-            print("[SpikeBehavior] Player Hit Spike!");
-            health.TakeOneDamage();
-            StartCoroutine(TemporaryInvincibility());
+            player.HitSpike();
         }
 
         //if (health.GetCurrentHealth() > 0)
@@ -166,22 +164,22 @@ public class SpikeBehavior : MonoBehaviour
     /// <summary>
     /// create a 4.5 seconds invvincibility window after damage is taken
     /// </summary>
-    IEnumerator TemporaryInvincibility()//this is a corroutine
-    {
-        float time = 4.5f;
+    //IEnumerator TemporaryInvincibility()//this is a corroutine
+    //{
+    //    float time = 4.5f;
 
-        isInvincible = true;
-        print("Invincible!!!");
+    //    isInvincible = true;
+    //    print("Invincible!!!");
 
-        // bool flag = true;
+    //    // bool flag = true;
 
-        while (true)
-        {
-            yield return new WaitForSeconds(time);
-            isInvincible = false;
-            print("End Invincibility");
-        }
+    //    while (true)
+    //    {
+    //        yield return new WaitForSeconds(time);
+    //        isInvincible = false;
+    //        print("End Invincibility");
+    //    }
 
 
-    }
+    //}
 }
