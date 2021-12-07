@@ -106,7 +106,9 @@ public class Manager : MonoBehaviour
         timerDisplay = formatTimerDisplay(timerSeconds);
         TimerValue.text = timerDisplay;
         currentHealth = health.GetCurrentHealth();
-        ScoreValue.text = "Score: " + wispsCollected.ToString();
+        string scoreString = GetScoreString(wispsCollected, wispsAvailable);
+        ScoreValue.text = scoreString;
+
         //DidPlayerFall();
 
 
@@ -117,7 +119,14 @@ public class Manager : MonoBehaviour
             if (wisp.isCollected)
             { 
                 wispsCollected += 1;
-                //wispList.Remove(wisp);
+                try
+                {
+                    wispList.Remove(wisp);
+                }
+                catch (System.Exception e)
+                {
+
+                }
                 
             }
         }
@@ -260,6 +269,15 @@ public class Manager : MonoBehaviour
         LevelOneStars.sprite = starImagesArray[highscoreOne];
         LevelTwoStars.sprite = starImagesArray[highscoreTwo];
 
+    }
+
+    public string GetScoreString(float wispsCollected, float wispsAvailable)
+    {
+        string collectedString = wispsCollected.ToString("0");
+        string availableString = wispsAvailable.ToString("0");
+        string outputString = string.Concat("SCORE: ", collectedString, " / ", availableString);
+
+        return outputString;
     }
     //public void DidPlayerFall()
     //{
