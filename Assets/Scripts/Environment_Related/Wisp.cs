@@ -5,10 +5,12 @@ using UnityEngine;
 public class Wisp : MonoBehaviour
 {
     string PlayerName = "SideScrollPlayer";
-    public bool isCollected = false;
+    public bool isCollected = false; 
     public GameObject[] wisps;
 
     public int wispPoints = 0;
+
+    protected AudioSource source;
 
 
 
@@ -18,6 +20,7 @@ public class Wisp : MonoBehaviour
         foreach (GameObject go in wisps)
         {
             go.SetActive(true);
+            
         }
 
     }
@@ -26,12 +29,15 @@ public class Wisp : MonoBehaviour
     {
         if (collision.gameObject.name == PlayerName)
         {
-            //gameObject.GetComponent<Manager>().wispsCollected++;
+            
             isCollected = true;
 
             //Destroy(gameObject);
             //setting triggered wisp to active == false
-            gameObject.SetActive(false);
+            source = GetComponent<AudioSource>();
+            source.Play();
+            //gameObject.SetActive(false);
+            
         }
 
     }
