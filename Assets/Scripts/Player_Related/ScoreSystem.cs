@@ -65,16 +65,19 @@ public class ScoreSystem
         // all wisps collected
         if (percentOfWispsCollected == 1f)
         {
+            Debug.Log("[ScoreSystem] Star Awarded For Wisps");
             yourScore++;
         }
 
         // close to best time
         if (currentTime <= 1.5f * bestTime)
         {
+            Debug.Log("[ScoreSystem] Star Awarded For Good Time");
             yourScore++;
             // actual best time
             if (currentTime <= bestTime)
             {
+                Debug.Log("[ScoreSystem] Star Awarded For Best Time");
                 yourScore++;
             }
         }         

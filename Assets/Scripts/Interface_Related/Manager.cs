@@ -10,6 +10,7 @@ public class Manager : MonoBehaviour
     public string levelName;
     public float score;
     public float timeToLevelComplete;
+    public float threeStarTimeInSeconds;
     public float timerSeconds;
     public string timerDisplay;
     public float wispsAvailable;
@@ -34,7 +35,7 @@ public class Manager : MonoBehaviour
     public bool deathScreenVisible;
     public bool winScreenVisible;
     public Camera mainCamera;
-    public Text LevelScoreDisplayText;
+    // public Text LevelScoreDisplayText;
     
 
     
@@ -47,9 +48,9 @@ public class Manager : MonoBehaviour
 
         // Score System
         levelName = SceneManager.GetActiveScene().name;
-        scoreObject = new ScoreSystem(levelName);         
+        scoreObject = new ScoreSystem(levelName, threeStarTimeInSeconds);         
         highscore = scoreObject.GetHighscoreForLevel(levelName);
-        LevelScoreDisplayText.text = highscore.ToString();
+        // LevelScoreDisplayText.text = highscore.ToString();
 
         score = 0;        
         timerSeconds = 0;
@@ -220,8 +221,10 @@ public class Manager : MonoBehaviour
         if (newHighscore > highscore)
         {
             scoreObject.SetHighscoreForLevel(levelName, newHighscore);
-            print("NEW SCORE: " + newHighscore.ToString());
+            
         }
+        print("[Manager] NEW SCORE: " + newHighscore.ToString());
+        print("[Manager] BEST SCORE: " + scoreObject.GetHighscoreForLevel(levelName));
 
     }
 

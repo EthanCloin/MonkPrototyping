@@ -39,7 +39,6 @@ public class Health
     /// <returns>int currentHealth after taking damage</returns>
     public int TakeOneDamage()
     {
-        Debug.Log("Health: Player took 1 Damage! Health is " + currentHealth.ToString());
         return currentHealth--;
     }
 
