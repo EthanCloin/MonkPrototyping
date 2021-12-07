@@ -9395,6 +9395,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9617830}
     - target: {fileID: 1889506420315276660, guid: 8bd923cc913cb463a94aa5932e49ea78, type: 3}
+      propertyPath: ScoreValue
+      value: 
+      objectReference: {fileID: 816807080}
+    - target: {fileID: 1889506420315276660, guid: 8bd923cc913cb463a94aa5932e49ea78, type: 3}
+      propertyPath: TimerValue
+      value: 
+      objectReference: {fileID: 955482286}
+    - target: {fileID: 1889506420315276660, guid: 8bd923cc913cb463a94aa5932e49ea78, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 0}
