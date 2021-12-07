@@ -115,7 +115,7 @@ public class Manager : MonoBehaviour
             //TODO: Redesign this to be less destructive
             // Dynamically update wispList upon collection
             if (wisp.isCollected)
-            {
+            { 
                 wispsCollected += 1;
                 //wispList.Remove(wisp);
                 
