@@ -19,7 +19,7 @@ public class ScoreSystem
 {
     private int highscore; // 0-3
     private string levelName; // scene names
-    private float bestTime; // fewest seconds to complete 
+    private float bestTime; // fewest seconds to complete    
 
     /// <summary>
     /// Object to manage the score for a level
@@ -93,4 +93,8 @@ public class ScoreSystem
         PlayerPrefs.SetInt(levelName, newScore);
     }
 
+    public void ResetHighscore(string levelName)
+    {
+        PlayerPrefs.SetInt(levelName, 0);        
+    }
 }
