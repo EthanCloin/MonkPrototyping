@@ -9,6 +9,8 @@ TagManager:
   - crate
   - Heart
   - spike
+  - SC1WContainer
+  - SC2Wcontainer
   layers:
   - Default
   - TransparentFX

@@ -97,7 +97,8 @@ public class Manager : MonoBehaviour
             if (wisp.isCollected)
             {
                 wispsCollected += 1;
-                wispList.Remove(wisp);
+                //wispList.Remove(wisp);
+                
             }
         }
 
