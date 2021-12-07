@@ -38,11 +38,7 @@ public class Manager : MonoBehaviour
     public bool winScreenVisible;
     public Camera mainCamera;
     // public Text LevelScoreDisplayText;
-<<<<<<< Updated upstream
-    
-=======
 
->>>>>>> Stashed changes
 
 
     // Start is called before the first frame update
@@ -53,11 +49,11 @@ public class Manager : MonoBehaviour
 
         // Score System
         levelName = SceneManager.GetActiveScene().name;
-<<<<<<< Updated upstream
+
         scoreObject = new ScoreSystem(levelName, threeStarTimeInSeconds);         
-=======
+
         scoreObject = new ScoreSystem(levelName, threeStarTimeInSeconds);
->>>>>>> Stashed changes
+
         highscore = scoreObject.GetHighscoreForLevel(levelName);
         // LevelScoreDisplayText.text = highscore.ToString();
 
@@ -224,11 +220,7 @@ public class Manager : MonoBehaviour
         if (newHighscore > highscore)
         {
             scoreObject.SetHighscoreForLevel(levelName, newHighscore);
-<<<<<<< Updated upstream
-            
-=======
 
->>>>>>> Stashed changes
         }
         print("[Manager] NEW SCORE: " + newHighscore.ToString());
         print("[Manager] BEST SCORE: " + scoreObject.GetHighscoreForLevel(levelName));
