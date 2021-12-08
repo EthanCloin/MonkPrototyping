@@ -18,6 +18,7 @@ public class Manager : MonoBehaviour
     public List<Wisp> wispList;
     public ScoreSystem scoreObject;
     public int highscore;
+    // public float bestTime;
     public Text TimerValue;
     public Text ScoreValue;
 
@@ -43,8 +44,7 @@ public class Manager : MonoBehaviour
 
     // DataManagement
     public string LevelOneName = "SideScrollPrototyping";
-    public string LevelTwoName = "2_level_raft";
-    public bool ResetHighScores;
+    public string LevelTwoName = "2_level_raft";    
     
 
 
@@ -106,7 +106,9 @@ public class Manager : MonoBehaviour
         timerDisplay = formatTimerDisplay(timerSeconds);
         TimerValue.text = timerDisplay;
         currentHealth = health.GetCurrentHealth();
-        ScoreValue.text = "Score: " + wispsCollected.ToString();
+        string scoreString = GetScoreString(wispsCollected, wispsAvailable);
+        ScoreValue.text = scoreString;
+
         //DidPlayerFall();
 
 
@@ -117,7 +119,14 @@ public class Manager : MonoBehaviour
             if (wisp.isCollected)
             { 
                 wispsCollected += 1;
-                //wispList.Remove(wisp);
+                try
+                {
+                    wispList.Remove(wisp);
+                }
+                catch (System.Exception e)
+                {
+
+                }
                 
             }
         }
@@ -230,8 +239,9 @@ public class Manager : MonoBehaviour
     public void CompleteLevel() //should call when player touches the fireplace
     {
         ShowWinScreen();
-        FreezeTime();
         UpdateHighscore();
+        FreezeTime();
+        
     }
 
     public void UpdateHighscore()
@@ -259,6 +269,15 @@ public class Manager : MonoBehaviour
         LevelOneStars.sprite = starImagesArray[highscoreOne];
         LevelTwoStars.sprite = starImagesArray[highscoreTwo];
 
+    }
+
+    public string GetScoreString(float wispsCollected, float wispsAvailable)
+    {
+        string collectedString = wispsCollected.ToString("0");
+        string availableString = wispsAvailable.ToString("0");
+        string outputString = string.Concat("SCORE: ", collectedString, " / ", availableString);
+
+        return outputString;
     }
     //public void DidPlayerFall()
     //{
