@@ -165,7 +165,6 @@ public class SideScrollPlayer : MonoBehaviour
         if (isInvincible) { return; }
 
         health.TakeOneDamage();
-        GetComponent<AudioSource>().Play();
         StartCoroutine(TemporaryInvincibility());                                
     }
 

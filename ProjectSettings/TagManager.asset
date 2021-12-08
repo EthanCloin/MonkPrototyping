@@ -11,7 +11,8 @@ TagManager:
   - spike
   - SC1WContainer
   - SC2Wcontainer
-  - WispSFX
+
+  - wispAudio
   layers:
   - Default
   - TransparentFX
