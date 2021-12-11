@@ -499,6 +499,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2036009307}
     - target: {fileID: 1889506420315276660, guid: 8bd923cc913cb463a94aa5932e49ea78, type: 3}
+      propertyPath: ResetHighScores
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1889506420315276660, guid: 8bd923cc913cb463a94aa5932e49ea78, type: 3}
       propertyPath: starImagesArray.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -595,6 +599,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2534363168239893954, guid: 75064e9f63a2e495b91264fe732e59f8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534363168239893954, guid: 75064e9f63a2e495b91264fe732e59f8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 13.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3525819262441895232, guid: 75064e9f63a2e495b91264fe732e59f8, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 35.5
@@ -779,6 +791,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TitleScreenUI
       objectReference: {fileID: 0}
+    - target: {fileID: 6514715929799036431, guid: 75064e9f63a2e495b91264fe732e59f8, type: 3}
+      propertyPath: m_Name
+      value: LevelTwoScoreStars
+      objectReference: {fileID: 0}
     - target: {fileID: 6613534662715497227, guid: 75064e9f63a2e495b91264fe732e59f8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -802,6 +818,18 @@ PrefabInstance:
     - target: {fileID: 7060668269284131571, guid: 75064e9f63a2e495b91264fe732e59f8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 40.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753072473072132645, guid: 75064e9f63a2e495b91264fe732e59f8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753072473072132645, guid: 75064e9f63a2e495b91264fe732e59f8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 30.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8061158422274531098, guid: 75064e9f63a2e495b91264fe732e59f8, type: 3}
+      propertyPath: m_Name
+      value: LevelOneScoreStars
       objectReference: {fileID: 0}
     - target: {fileID: 8955553101020639111, guid: 75064e9f63a2e495b91264fe732e59f8, type: 3}
       propertyPath: m_AnchoredPosition.x

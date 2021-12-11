@@ -44,6 +44,7 @@ public class ScoreSystem
         // check whether highscore for this level exists
         if (PlayerPrefs.HasKey(levelName))
         {
+            Debug.Log("Score for " + levelName + ": " + PlayerPrefs.GetInt(levelName));
             return PlayerPrefs.GetInt(levelName);
         }
 
