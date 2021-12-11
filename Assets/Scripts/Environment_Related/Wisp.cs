@@ -9,7 +9,7 @@ public class Wisp : MonoBehaviour
     public GameObject[] wisps;
 
     public int wispPoints = 0;
-    private AudioSource source;
+    // private AudioSource source;
 
     
 
@@ -17,7 +17,7 @@ public class Wisp : MonoBehaviour
 
     void Start()
     {
-        source = GameObject.FindGameObjectWithTag("wispAudio").GetComponent<AudioSource>(); ;
+        // source = GameObject.FindGameObjectWithTag("wispAudio").GetComponent<AudioSource>(); ;
         //Setting all wisps to active
         foreach (GameObject go in wisps)
         {
@@ -37,7 +37,7 @@ public class Wisp : MonoBehaviour
             //Destroy(gameObject);
             //setting triggered wisp to active == false
             
-            source.Play();
+            // source.Play();
             gameObject.SetActive(false);
              
         }

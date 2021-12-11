@@ -65,7 +65,9 @@ public class Manager : MonoBehaviour
             int highscoreTwo = scoreObject.GetHighscoreForLevel(LevelTwoName);
 
             LevelOneStars.sprite = starImagesArray[highscoreOne];
+            print("ONE: " + highscoreOne.ToString());
             LevelTwoStars.sprite = starImagesArray[highscoreTwo];
+            print("TWO: " + highscoreTwo.ToString());
 
         }
         else
@@ -106,8 +108,8 @@ public class Manager : MonoBehaviour
         timerDisplay = formatTimerDisplay(timerSeconds);
         TimerValue.text = timerDisplay;
         currentHealth = health.GetCurrentHealth();
-        ScoreValue.text = "Score: " + wispsCollected.ToString();
-        //DidPlayerFall();
+        string scoreString = GetScoreString(wispsCollected, wispsAvailable);
+        ScoreValue.text = scoreString;
 
 
         foreach (Wisp wisp in wispList)
@@ -117,7 +119,15 @@ public class Manager : MonoBehaviour
             if (wisp.isCollected)
             { 
                 wispsCollected += 1;
-                //wispList.Remove(wisp);
+                try
+                {
+                    wispList.Remove(wisp);
+                }
+                catch (System.InvalidOperationException e)
+                {
+                    Debug.Log(e);
+                }
+                
                 
             }
         }
@@ -259,6 +269,15 @@ public class Manager : MonoBehaviour
         LevelOneStars.sprite = starImagesArray[highscoreOne];
         LevelTwoStars.sprite = starImagesArray[highscoreTwo];
 
+    }
+
+    public string GetScoreString(float wispsCollected, float wispsAvailable)
+    {
+        string collectedString = wispsCollected.ToString("0");
+        string availableString = wispsAvailable.ToString("0");
+        string outputString = string.Concat("SCORE: ", collectedString, " / ", availableString);
+
+        return outputString;
     }
     //public void DidPlayerFall()
     //{
